@@ -1,7 +1,7 @@
 import sys
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Users/manoe/AppData/Local/Programs/Python/Python311/Lib/site-packages/PyQt6/Qt6/plugins'
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QInputDialog, QLineEdit, QMenu, QSystemTrayIcon, QStyle
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QInputDialog, QLineEdit, QMenu, QSystemTrayIcon, QStyle, QMessageBox
 from PyQt6.QtGui import QPixmap, QIcon, QFont, QDesktopServices
 from PyQt6 import QtGui
 from PyQt6.QtCore import *
@@ -74,17 +74,23 @@ class Aplicativo(QWidget):
 
     def abrir_etrade(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/ETrade.exe"))
+        self.showMinimized()
+        QMessageBox().information(self, "ETrade", "Aguarde o ETrade Abrir!", QMessageBox:None)
 
     def abrir_pdv(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/PDV.exe"))
         QDesktopServices().openUrl(QUrl("C:/ETrade/Bridge.exe"))
+       
+        self.showMinimized()
 
     def abrir_pasta(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/"))
+        self.showMinimized()
 
     def abrir_config(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/ProgramaBackup.exe"))
         QDesktopServices().openUrl(QUrl("C:/ETrade/UtilitarioBD.exe"))
+        self.showMinimized()
 
     def minimizar_minizar(self):
         self.showMinimized()
@@ -181,15 +187,20 @@ class JanelaSuporte(QWidget):
 
     def abrir_TeamViewer(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/Uteis/TeamViewer.lnk"))
+        self.showMinimized()
+        QMessageBox().information(self, "Aviso", "Aguarde o TeamViewer abrir ")
 
     def abrir_Ammyy(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/Uteis/AA_v3.exe"))
+        self.showMinimized()
 
     def abrir_ShowMyPC(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/Uteis/ShowMyPC3620.exe"))
+        self.showMinimized()
 
     def abrir_AnyDesk(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/Uteis/adqs.exe"))
+        self.showMinimized()
 
     def abrir_XML(self):
         QDesktopServices().openUrl(QUrl("https://www.fsist.com.br"))
@@ -207,7 +218,8 @@ class JanelaSuporte(QWidget):
     def abrir_TELEFONE(self):
         QDesktopServices().openUrl(
             QUrl("https://wa.me/556533584188?text=Ol%C3%A1%2C+Gostaria+de+uma+ajuda"))
-
+        self.showMinimized()
+        
     def abrir_fechar(self):
         self.hide()
         self.voltar_sinal.emit()
