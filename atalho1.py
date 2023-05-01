@@ -1,11 +1,10 @@
 import sys
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QInputDialog, QLineEdit, QMenu, QSystemTrayIcon, QStyle, QMessageBox, QDialog
+from PyQt6.QtCore import Qt, QUrl, pyqtSignal
+from PyQt6 import QtGui
+from PyQt6.QtGui import QPixmap, QIcon, QDesktopServices
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Users/manoe/AppData/Local/Programs/Python/Python311/Lib/site-packages/PyQt6/Qt6/plugins'
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QFileDialog, QInputDialog, QLineEdit, QMenu, QSystemTrayIcon, QStyle, QMessageBox
-from PyQt6.QtGui import QPixmap, QIcon, QFont, QDesktopServices
-from PyQt6 import QtGui
-from PyQt6.QtCore import *
-
 
 
 class Aplicativo(QWidget):
@@ -45,7 +44,7 @@ class Aplicativo(QWidget):
         Suporte = QPushButton("Suporte", self)
         Suporte.setGeometry(350, 20, 150, 70)
         Suporte.setStyleSheet(
-            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         Suporte.clicked.connect(self.abrir_suporte)
 
@@ -75,12 +74,12 @@ class Aplicativo(QWidget):
     def abrir_etrade(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/ETrade.exe"))
         self.showMinimized()
-        QMessageBox().information(self, "ETrade", "Aguarde o ETrade Abrir!", QMessageBox:None)
+        QMessageBox.information(self, "ETrade", "ETrade aberto com sucesso!")
 
     def abrir_pdv(self):
         QDesktopServices().openUrl(QUrl("C:/ETrade/PDV.exe"))
         QDesktopServices().openUrl(QUrl("C:/ETrade/Bridge.exe"))
-       
+
         self.showMinimized()
 
     def abrir_pasta(self):
@@ -115,7 +114,6 @@ class JanelaSuporte(QWidget):
         fundo = QLabel(self)
         fundo.setGeometry(0, 0, 500, 500)
         fundo.setPixmap(QtGui.QPixmap("image/Suporte.png"))
-        
 
         TeamViwer = QPushButton("TeamViewer", self)
         TeamViwer.setGeometry(180, 120, 150, 50)
@@ -140,35 +138,36 @@ class JanelaSuporte(QWidget):
 
         AnyDesk = QPushButton("AnyDesk", self)
         AnyDesk.setGeometry(10, 10, 150, 50)
-        AnyDesk.setStyleSheet("font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FF0000, stop: 1 #A52A2A);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A52A2A, stop: 1 #FF0000);")
+        AnyDesk.setStyleSheet(
+            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FF0000, stop: 1 #A52A2A);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A52A2A, stop: 1 #FF0000);")
 
         AnyDesk.clicked.connect(self.abrir_AnyDesk)
 
         XML = QPushButton("XML", self)
         XML.setGeometry(10, 250, 100, 50)
         XML.setStyleSheet(
-            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         XML.clicked.connect(self.abrir_XML)
 
         NCM = QPushButton("NCM", self)
         NCM.setGeometry(200, 250, 100, 50)
         NCM.setStyleSheet(
-            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         NCM.clicked.connect(self.abrir_NCM)
 
         CNPJ = QPushButton("CNPJ", self)
         CNPJ.setGeometry(400, 250, 100, 48)
         CNPJ.setStyleSheet(
-            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 22pt Arial;margin: 5px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         CNPJ.clicked.connect(self.abrir_CNPJ)
 
         SINTREGA = QPushButton("SINTREGA", self)
         SINTREGA.setGeometry(175, 330, 180, 48)
         SINTREGA.setStyleSheet(
-            "font: 20pt Arial;margin: 2px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 20pt Arial;margin: 2px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         SINTREGA.clicked.connect(self.abrir_SINTEGRA)
 
@@ -181,7 +180,7 @@ class JanelaSuporte(QWidget):
         TELEFONE = QPushButton("Acessar Chat SUPORTE", self)
         TELEFONE.setGeometry(10, 380, 250, 100)
         TELEFONE.setStyleSheet(
-            "font: 15pt Arial;margin: 2px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 A9A9A9, stop: 1 #D3D3D3);")
+            "font: 15pt Arial;margin: 2px; border-color: #0c457e; border-style: outset; border-radius: 15px;border-width: 1px;color: white; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #D3D3D3, stop: 1 #A9A9A9);}QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A9A9A9, stop: 1 #D3D3D3);")
 
         TELEFONE.clicked.connect(self.abrir_TELEFONE)
 
@@ -219,7 +218,7 @@ class JanelaSuporte(QWidget):
         QDesktopServices().openUrl(
             QUrl("https://wa.me/556533584188?text=Ol%C3%A1%2C+Gostaria+de+uma+ajuda"))
         self.showMinimized()
-        
+
     def abrir_fechar(self):
         self.hide()
         self.voltar_sinal.emit()
